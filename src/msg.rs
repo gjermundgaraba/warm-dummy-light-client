@@ -31,7 +31,7 @@ pub struct VerifyMembershipMsg {
     pub delay_time_period: u64,
     pub delay_block_period: u64,
     pub proof: Binary,
-    pub path: Vec<Binary>,
+    pub merkle_path: MerklePath,
     pub value: Binary,
 }
 
@@ -41,7 +41,7 @@ pub struct VerifyNonMembershipMsg {
     pub delay_time_period: u64,
     pub delay_block_period: u64,
     pub proof: Binary,
-    pub path: Vec<Binary>,
+    pub merkle_path: MerklePath,
 }
 
 #[cw_serde]
@@ -105,12 +105,6 @@ pub struct StatusMsg {}
 #[cw_serde]
 pub struct ExportMetadataMsg {}
 
-//#[cw_serde]
-//pub struct Height {
-//    pub revision_number: u64,
-//    pub revision_height: u64,
-//}
-
 #[cw_serde]
 pub struct Height {
     /// the revision that the client is currently on
@@ -126,7 +120,6 @@ pub struct UpdateStateResult {
     pub heights: Vec<Height>,
 }
 
-// TODO: USE WHEN MOVING OVER TO "REAL"
 #[cw_serde]
 pub struct MerklePath {
     pub key_path: Vec<Binary>,
