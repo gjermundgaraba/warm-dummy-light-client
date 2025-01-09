@@ -106,7 +106,7 @@ pub fn check_for_misbehaviour() -> Result<Binary, ContractError> {
 }
 
 pub fn timestamp_at_height(env: Env) -> Result<Binary, ContractError> {
-    let now = env.block.time.seconds();
+    let now = env.block.time.nanos();
     Ok(to_json_binary(&TimestampAtHeightResult { timestamp: now })?)
 }
 
